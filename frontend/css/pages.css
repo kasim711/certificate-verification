@@ -1,0 +1,14 @@
+.timeline {
+  list-style: none;
+  margin-top: 15px;
+}
+
+.timeline li {
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.timeline li.active {
+  color: var(--success);
+  font-weight: 600;
+}

@@ -1,0 +1,22 @@
+:root {
+  /* Backgrounds */
+  --bg-main: #0f172a;
+  --bg-card: #020617;
+  --bg-sidebar: #020617;
+
+  /* Text */
+  --text-primary: #e5e7eb;
+  --text-secondary: #94a3b8;
+
+  /* Primary */
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  /* Status */
+  --success: #22c55e;
+  --error: #ef4444;
+  --warning: #facc15;
+
+  /* Border */
+  --border: #334155;
+}

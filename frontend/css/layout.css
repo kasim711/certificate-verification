@@ -1,0 +1,26 @@
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 220px;
+  background: var(--bg-sidebar);
+  padding: 20px;
+}
+
+.sidebar a {
+  display: block;
+  color: var(--text-secondary);
+  text-decoration: none;
+  margin-bottom: 15px;
+}
+
+.sidebar a:hover {
+  color: var(--text-primary);
+}
+
+.main {
+  flex: 1;
+  padding: 30px;
+}
