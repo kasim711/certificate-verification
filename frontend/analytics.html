@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Analytics</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<div class="navbar">
+  <h2>BCVS</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="explorer.html">Explorer</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h3>Analytics Dashboard</h3>
+
+    <p>Total Certificates Issued: <strong id="certCount">0</strong></p>
+    <p>Total Blocks in Chain: <strong id="blockCount">0</strong></p>
+  </div>
+</div>
+
+<!-- socket allowed -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/analytics.js"></script>
+</body>
+</html>

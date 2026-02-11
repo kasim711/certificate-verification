@@ -1,4 +1,4 @@
-function verifyCert() {
+/*function verifyCert() {
   const data = document.getElementById("verifyData").value;
 
   showLoader();
@@ -20,4 +20,27 @@ socket.on("verificationResult", (msg) => {
   result.className = msg.includes("AUTHENTIC")
     ? "status-success"
     : "status-error";
+});*/
+const socket = io();
+
+function verifyCert() {
+  const data = document.getElementById("verifyInput").value;
+
+  if (!data) {
+    alert("Enter certificate ID / hash");
+    return;
+  }
+
+  socket.emit("verifyCertificate", data);
+}
+
+socket.on("verificationResult", (msg) => {
+  const result = document.getElementById("result");
+  result.innerText = msg;
+
+  result.className = msg.includes("AUTHENTIC")
+    ? "status-success"
+    : "status-error";
 });
+
+

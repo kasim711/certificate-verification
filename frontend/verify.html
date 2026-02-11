@@ -2,17 +2,42 @@
 <html>
 <head>
   <title>Verify Certificate</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
 </head>
 <body>
-  <div class="container">
-    <h2>Verify Certificate</h2>
-    <textarea id="verifyData" placeholder="Paste certificate data"></textarea>
-    <button onclick="verifyCert()">Verify Certificate</button>
-    <div id="result"></div>
-  </div>
 
-  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
-  <script src="script.js"></script>
+<div class="navbar">
+  <h2>BCVS</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="analytics.html">Analytics</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h3>Verify Certificate</h3>
+
+    <!-- ✅ ID ADDED -->
+    <input id="verifyInput" placeholder="Certificate Hash / ID">
+
+    <br><br>
+
+    <!-- ✅ FUNCTION LINKED -->
+    <button onclick="verifyCert()">Verify</button>
+
+    <!-- ✅ RESULT ID ADDED -->
+    <p style="margin-top:15px;">
+      Status: <strong id="result">Waiting...</strong>
+    </p>
+  </div>
+</div>
+
+<!-- ✅ ORDER IS IMPORTANT -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/verify.js"></script>
+
 </body>
 </html>

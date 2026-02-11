@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Issue Certificate</title>
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/pages.css">
+</head>
+<body>
+
+<div class="navbar">
+  <h2>BCVS</h2>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="explorer.html">Explorer</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <h3>Issue Certificate</h3>
+
+    <input id="studentName" placeholder="Student Name">
+    <input id="certId" placeholder="Certificate ID">
+    <input id="course" placeholder="Course / Degree">
+    <input id="date" type="date">
+
+    <br><br>
+
+    <button onclick="issueCert()">Generate Certificate</button>
+
+    <p style="margin-top:15px;">
+      Status: <strong id="issueResult">Waiting...</strong>
+    </p>
+
+    <p style="margin-top:10px; font-size:14px;">
+      Hash: <span id="hashOutput" style="color:var(--text-secondary);"></span>
+    </p>
+  </div>
+</div>
+
+<script src="js/issue.js"></script>
+</body>
+</html>
