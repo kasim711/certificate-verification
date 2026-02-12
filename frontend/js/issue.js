@@ -9,7 +9,7 @@ async function issueCert() {
     return;
   }
 
-  // Combine data into single string (for hashing)
+  //combine
   const certificateData = `
     Name: ${name}
     Certificate ID: ${certId}
