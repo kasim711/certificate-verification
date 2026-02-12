@@ -29,12 +29,12 @@ async function issueCert() {
     const result = await res.json();
 
     document.getElementById("issueResult").innerText =
-      "Certificate Issued Successfully ✅";
+      "Certificate Issued Successfully ";
 
     document.getElementById("hashOutput").innerText = result.hash;
   } catch (err) {
     document.getElementById("issueResult").innerText =
-      "Error issuing certificate ❌";
+      "Error issuing certificate ";
   }
   app.post("/issue", (req, res) => {
   const { fileData } = req.body;
@@ -43,7 +43,7 @@ async function issueCert() {
 
   certificateChain.addBlock(hash);
 
-  // 🔥 broadcast analytics update
+  // broadcast analytics update
   io.emit("analyticsData", {
     totalBlocks: certificateChain.chain.length,
     totalCertificates: certificateChain.chain.length - 1,

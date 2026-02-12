@@ -30,9 +30,9 @@ io.on("connection", (socket) => {
     );
 
     if (found) {
-      socket.emit("verificationResult", "Certificate is AUTHENTIC ✅");
+      socket.emit("verificationResult", "Certificate is AUTHENTIC ");
     } else {
-      socket.emit("verificationResult", "Certificate is TAMPERED ❌");
+      socket.emit("verificationResult", "Certificate is TAMPERED ");
     }
   });
 });
@@ -40,7 +40,7 @@ io.on("connection", (socket) => {
 // API to issue certificate
 app.post("/issue", (req, res) => {
   const { fileData } = req.body;
-  const cleanData = fileData.trim(); // ✅ FIX
+  const cleanData = fileData.trim(); //  FIX
   const hash = crypto
     .createHash("sha256")
     .update(cleanData)
@@ -69,7 +69,7 @@ const io = new Server(server, { cors: { origin: "*" } });
 app.use(cors());
 app.use(express.json());
 
-/* 🔥 FRONTEND STATIC FILES */
+/*  FRONTEND STATIC FILES */
 app.use(express.static(path.join(__dirname, "../frontend")));
 
 const certificateChain = new Blockchain();
@@ -86,9 +86,9 @@ io.on("connection", (socket) => {
   );
 
   if (found) {
-    socket.emit("verificationResult", "Certificate is AUTHENTIC ✅");
+    socket.emit("verificationResult", "Certificate is AUTHENTIC ");
   } else {
-    socket.emit("verificationResult", "Certificate is TAMPERED ❌");
+    socket.emit("verificationResult", "Certificate is TAMPERED ");
   }
 });
 
@@ -130,9 +130,9 @@ io.on("connection", (socket) => {
     );
 
     if (found) {
-      socket.emit("verificationResult", "Certificate is AUTHENTIC ✅");
+      socket.emit("verificationResult", "Certificate is AUTHENTIC ");
     } else {
-      socket.emit("verificationResult", "Certificate is TAMPERED ❌");
+      socket.emit("verificationResult", "Certificate is TAMPERED ");
     }
   });
 });
