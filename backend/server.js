@@ -55,6 +55,9 @@ server.listen(5000, () => {
 });
 */
 const express = require("express");
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 const http = require("http");
 const { Server } = require("socket.io");
 const crypto = require("crypto");
@@ -95,12 +98,33 @@ io.on("connection", (socket) => {
 });
 
 // API to issue certificate
-app.post("/issue", (req, res) => {
+/*app.post("/issue", (req, res) => {
   const { fileData } = req.body;
   const cleanData = fileData.trim();
   const hash = crypto.createHash("sha256").update(cleanData).digest("hex");
 
   certificateChain.addBlock(hash);
+  res.json({ message: "Certificate Issued Successfully", hash });
+});*/
+app.post("/issue", upload.single("pdf"), (req, res) => {
+  const { fileData } = req.body;
+  const cleanData = fileData.trim();
+  const textBuffer = Buffer.from(cleanData);
+  const pdfBuffer = req.file ? req.file.buffer : Buffer.from("");
+  const finalBuffer = Buffer.concat([textBuffer, pdfBuffer]);
+  //hash
+  const hash = crypto.createHash("sha256")
+                     .update(finalBuffer)
+                     .digest("hex");
+
+  certificateChain.addBlock(hash);
+
+  //analytics update
+  io.emit("analyticsData", {
+    totalBlocks: certificateChain.chain.length,
+    totalCertificates: certificateChain.chain.length - 1,
+  });
+
   res.json({ message: "Certificate Issued Successfully", hash });
 });
 

@@ -3,8 +3,9 @@ async function issueCert() {
   const certId = document.getElementById("certId").value;
   const course = document.getElementById("course").value;
   const date = document.getElementById("date").value;
+  const file = document.getElementById("pdfFile").files[0];
 
-  if (!name || !certId || !course || !date) {
+  if (!name || !certId || !course || !date || !file) {
     alert("Please fill all fields");
     return;
   }
@@ -16,6 +17,10 @@ async function issueCert() {
     Course: ${course}
     Date: ${date}
   `;
+  //pdf
+  const formData = new FormData();
+  formData.append("fileData", certificateData);
+  formData.append("pdf", file);
 
   try {
     const res = await fetch("/issue", {
@@ -25,6 +30,13 @@ async function issueCert() {
       },
       body: JSON.stringify({ fileData: certificateData }),
     });
+
+    const res2 = await fetch("/issue", {
+      method: "POST",
+      body: formData,
+    });
+    const result2 = await res2.json();
+    document.getElementById("hashOutput").innerText = result2.hash;
 
     const result = await res.json();
 
